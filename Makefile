@@ -1,7 +1,7 @@
 .PHONY: build
 
-ARGS ?= -t corosync-qnetd:v2
+ARGS ?= -t corosync-qnetd:v3
 
 build:
-	docker pull debian:stretch-slim
+	docker pull debian:buster-slim
 	docker build $(ARGS) .

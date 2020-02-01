@@ -1,6 +1,6 @@
 # Dockerized Corosync QNet Daemon
 
-Sets up a Corosync v2 QNet Daemon for use with Proxmox v5.
+Sets up a Corosync v3 QNet Daemon for use with Proxmox v6.
 
 This allows you to deploy an external voter on a server that is not running
 Proxmox (e.g. a NAS).  The external voter mainly serves to break ties (e.g. if

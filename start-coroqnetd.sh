@@ -20,7 +20,8 @@ if [ ! -f "$db/cert8.db" ]; then
 fi
 
 echo "Starting corosync-qnetd, args: $*"
-exec /usr/bin/corosync-qnetd "$@" || error=$?
+error=0
+exec /usr/bin/corosync-qnetd -f "$@" || error=$?
 
 echo "Failed to start corosync-qnetd: $error" >&2
 # exec somehow failed, return the error code

@@ -41,8 +41,9 @@ EXPOSE 5403
 # The umask to use when creating new files/directories (default: 022)
 ENV UMASK=
 
-# The arguments to pass to corosync-qnetd, e.g. -f -s required -m 1
-CMD ["-f"]
+# The arguments to pass to corosync-qnetd (-f is always passed).
+# E.g. -s required -m 1
+CMD []
 ENTRYPOINT ["start-coroqnetd"]
 
 COPY start-coroqnetd.sh /usr/local/bin/start-coroqnetd

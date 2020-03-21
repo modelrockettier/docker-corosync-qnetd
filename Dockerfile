@@ -3,23 +3,16 @@ FROM debian:buster-slim
 LABEL description="Corosync Qdevice Network daemon"
 LABEL documentation="man:corosync-qnetd"
 
-# Install the proxmox repository signing key.
-ADD "https://git.proxmox.com/?p=proxmox-ve.git;a=blob_plain;f=debian/proxmox-ve-release-6.x.gpg;hb=refs/heads/master" \
-	/etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
-
 # Create the coroqnetd user and group, set the sticky bit on /var/run so
-# corosync-qnetd can create its runtime directory, and install the proxmox
-# corosync3 repository.  Don't create the runtime directory yet since the user
-# may want to run with a different uid/gid.
+# corosync-qnetd can create its runtime directory.  Don't create the runtime
+# directory yet since the user may want to run with a different uid/gid.
 #
-# Then install corosync-qnetd from the proxmox repos.
+# Then install corosync-qnetd from the debian repos.
 # Also prevent the post-install script from generating certs since
-# it will fail in the container, so we'll do this at runtime.
+# it will fail in the container, so we'll do it at runtime.
 RUN addgroup --system --quiet --gid=903 "coroqnetd" \
 	&& adduser --system --quiet --home "/etc/corosync/qnetd" --no-create-home --disabled-login --uid=903 --gid=903 "coroqnetd" \
 	&& chmod 1777 /var/run \
-	&& echo "deb http://download.proxmox.com/debian/pve buster pve-no-subscription" > /etc/apt/sources.list.d/corosync3.list \
-	&& chmod a+r /etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg \
 	&& mkdir -p /etc/corosync/qnetd/nssdb \
 	&& touch /etc/corosync/qnetd/nssdb/cert9.db \
 	&& apt-get update \

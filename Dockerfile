@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM arm32v7/debian:buster-slim
 
 LABEL description="Corosync Qdevice Network daemon"
 LABEL documentation="man:corosync-qnetd"

@@ -33,6 +33,9 @@ server.
    systemctl enable corosync-qdevice
    ```
 
+   * NOTE: if enable fails, first remove `/etc/init.d/corosync-qdevice` and try again.
+     See <https://forum.proxmox.com/threads/setting-up-qdevice-fails.56061/>
+
 3. Create and start the docker corosync-qnetd container:
    ```
    docker run -d --name=qnetd --cap-drop=ALL -p 5403:5403 \
@@ -105,6 +108,34 @@ server.
        corosync-qdevice-net-certutil -m \
           -c /etc/pve/corosync/qdevice/net/nssdb/qdevice-net-node.p12
        ```
+13. Add qdevice config to corosync.conf:
+	 * Edit `/etc/pve/corosync.conf` (See <https://pve.proxmox.com/pipermail/pve-devel/2017-July/027732.html>):
+	 * Replace:
+		```
+		quorum {
+			provider: corosync_votequorum
+		}
+		```
+	 * With:
+		```
+		quorum {
+     		provider: corosync_votequorum
+     		device {
+         		model: net
+         		votes: 1
+         		net {
+           		tls: on
+           		host: <ip address of your corosync-qnetd container>
+           		algorithm: ffsplit
+         		}
+     		}
+		}
+		```
+		
+14. On all Proxmox nodes, restart the corosync-qdevice service if needed:
+   ```
+   systemctl restart corosync-qdevice
+   ```
 
 ## Quick Setup (untested/unsupported)
 

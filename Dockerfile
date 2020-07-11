@@ -36,15 +36,14 @@ USER 903:903
 # Corosync settings
 VOLUME /etc/corosync
 
-# Runtime info for corosync, you shouldn't need to mount this
-# (but it'll fail to start without this)
-VOLUME /var/run
-
 # The Corosync qnet device port (TCP)
 EXPOSE 5403
 
 # The umask to use when creating new files/directories (default: 022)
 ENV UMASK=
+
+# You can also add qnetd arguments via this environment variable
+ENV COROSYNC_QNETD_OPTIONS=
 
 # The arguments to pass to corosync-qnetd (-f is always passed).
 # E.g. -s required -m 1

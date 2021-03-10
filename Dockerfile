@@ -4,7 +4,7 @@ LABEL description="Corosync Qdevice Network daemon"
 LABEL documentation="man:corosync-qnetd"
 
 # Install the proxmox repository signing key.
-ADD "https://git.proxmox.com/?p=proxmox-ve.git;a=blob_plain;f=debian/proxmox-ve-release-6.x.gpg;hb=refs/heads/master" \
+ADD "https://enterprise.proxmox.com/debian/proxmox-ve-release-6.x.gpg" \
 	/etc/apt/trusted.gpg.d/proxmox-ve-release-6.x.gpg
 
 # Create the coroqnetd user and group, set the sticky bit on /var/run so

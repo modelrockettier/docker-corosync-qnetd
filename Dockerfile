@@ -30,7 +30,7 @@ VOLUME /etc/corosync
 
 # Runtime info for corosync, you shouldn't need to mount this
 # (but it'll fail to start without this)
-VOLUME /var/run
+# VOLUME /var/run
 
 # The Corosync port (TCP)
 EXPOSE 5403

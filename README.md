@@ -12,7 +12,7 @@ The external voter mainly serves to break ties (e.g. if the cluster has an even 
 See <https://pve.proxmox.com/wiki/Cluster_Manager#_corosync_external_vote_support>
 for more information.
 
-**NOTE: This container does not have an SSH server installed, so setting it up is a bit more 
+**NOTE: This container does not have an SSH server installed, so setting it up is a bit more
 involved than a simple `pvecm qdevice setup`.**
 
 ## Getting Started

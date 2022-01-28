@@ -12,7 +12,7 @@ ADD "https://enterprise.proxmox.com/debian/proxmox-ve-release-6.x.gpg" \
 # corosync3 repository.  Don't create the runtime directory yet since the user
 # may want to run with a different uid/gid.
 #
-# Then install corosync-qnetd from the proxmox repos. Also don't generate
+# Then install corosync-qnetd from the Proxmox repos. Also don't generate
 # the certs here and instead create them when the container is first run.
 RUN adduser --quiet --system --disabled-login --no-create-home \
 		--home /etc/corosync/qnetd --group --uid=903 coroqnetd \

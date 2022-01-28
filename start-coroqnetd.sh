@@ -32,9 +32,13 @@ if [ ! -f "$db/cert9.db" ]; then
 	fi
 fi
 
-echo "Starting corosync-qnetd, args: $*"
+if [ -n "$COROSYNC_QNETD_OPTIONS$*" ]; then
+	echo "Starting corosync-qnetd with args: $COROSYNC_QNETD_OPTIONS $*"
+else
+	echo "Starting corosync-qnetd"
+fi
 error=0
-exec /usr/bin/corosync-qnetd -f "$@" || error=$?
+exec /usr/bin/corosync-qnetd -f $COROSYNC_QNETD_OPTIONS "$@" || error=$?
 
 echo "Failed to start corosync-qnetd: $error" >&2
 # exec somehow failed, return the error code

@@ -1,6 +1,6 @@
 # Dockerized Corosync QNet Daemon
 
-Sets up a Corosync v3 QNet Daemon for use with Proxmox v6.
+Sets up a Corosync v3 QNet Daemon for use with Proxmox.
 
 [![Docker Hub][docker-img]](https://hub.docker.com/r/modelrockettier/corosync-qnetd)
 

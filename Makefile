@@ -1,6 +1,6 @@
 .PHONY: build
 
-ARGS ?= -t corosync-qnetd:v3
+ARGS ?= -t corosync-qnetd:latest
 
 build:
 	docker pull debian:buster-slim

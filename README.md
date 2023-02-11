@@ -2,9 +2,7 @@
 
 Sets up a Corosync v3 QNet Daemon for use with Proxmox.
 
-[![Docker Hub][docker-img]](https://hub.docker.com/r/modelrockettier/corosync-qnetd)
-
-[docker-img]: https://img.shields.io/docker/cloud/build/modelrockettier/corosync-qnetd?label=docker&cacheSeconds=300 "Docker Hub build status"
+[Docker Hub](https://hub.docker.com/r/modelrockettier/corosync-qnetd)
 
 This allows you to deploy an external voter on a server that is not running Proxmox (e.g. a NAS).
 The external voter mainly serves to break ties (e.g. if the cluster has an even number of nodes).

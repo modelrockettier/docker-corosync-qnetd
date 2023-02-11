@@ -4,7 +4,14 @@ If you try to build this on x86, it will fail since ARM binaries can't run
 natively on x86 CPUs. In order to work around this, you will need to install
 qemu, which will translate the ARM machine code into x86 instructions.
 
-## Instructions
+## Use docker buildx
+
+1. Build using docker buildx
+   ```
+   docker buildx build --platform linux/arm64/v8 --tag corosync-qnetd:arm64v8 .
+   ```
+
+## The manual instructions
 
 1. Install qemu-user-static and binfmt-support
    ```

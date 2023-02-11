@@ -1,4 +1,5 @@
-FROM arm64v8/debian:buster-slim
+ARG ARCH=arm64v8/
+FROM ${ARCH}debian:buster-slim
 
 LABEL description="Corosync Qdevice Network daemon"
 LABEL documentation="man:corosync-qnetd"

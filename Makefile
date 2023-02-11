@@ -1,7 +1,7 @@
 .PHONY: build
 
-ARGS ?= -t corosync-qnetd:v3-arm64v8
+ARGS ?= --tag corosync-qnetd:v3-arm64v8
 
 build:
 	docker pull arm64v8/debian:buster-slim
-	docker build $(ARGS) .
+	docker buildx build --platform linux/arm64/v8 $(ARGS) .

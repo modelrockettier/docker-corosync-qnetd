@@ -1,0 +1,6 @@
+*.md
+.git/
+.github/
+Makefile
+Dockerfile
+LICENSE

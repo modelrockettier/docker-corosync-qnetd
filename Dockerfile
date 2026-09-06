@@ -1,7 +1,10 @@
 FROM debian:bookworm-slim
 
-LABEL description="Corosync Qdevice Network daemon"
-LABEL documentation="man:corosync-qnetd"
+LABEL org.opencontainers.image.title="corosync-qnetd"
+LABEL org.opencontainers.image.description="Corosync Qdevice Network daemon"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.source="https://github.com/modelrockettier/docker-corosync-qnetd"
+LABEL org.opencontainers.image.url="https://github.com/modelrockettier/docker-corosync-qnetd"
 
 # Install the proxmox repository signing key.
 ADD "https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg" \

@@ -77,6 +77,7 @@ directly transfer files (e.g. via scp) between it and the docker host will make 
       it's easiest to just copy the CA certificate there on 1 node, and it'll automatically
       propogate to all other nodes. This way you won't need to copy it over to the other nodes
       individually.
+      - If the directory `/etc/pve/corosync/qdevice/net/nssdb` is missing, run `mkdir -p /etc/pve/corosync/qdevice/net/nssdb` on the Proxmox node.
 
 4. **\[proxmox\]** Install the corosync-qdevice package on the first Proxmox node:
    ```
@@ -91,6 +92,7 @@ directly transfer files (e.g. via scp) between it and the docker host will make 
 
    * NOTE: if enable fails, try deleting `/etc/init.d/corosync-qdevice` and try again.
      See <https://forum.proxmox.com/threads/setting-up-qdevice-fails.56061/>
+     - The `corosync-qdevice` service will fail to start as step 14 has not been done yet. It should not fail to start after doing step 14.
 
 6. **\[proxmox\]** Initialize the corosync-qdevice certificate database on the first Proxmox node:
    ```
